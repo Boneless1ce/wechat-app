@@ -1,16 +1,80 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/pindao/pindao",
+			"style": {
+				"navigationBarTitleText": "频道"
+			}
+		},
+		{
+			"path": "pages/function/function",
+			"style": {
+				"navigationBarTitleText": "更多功能"
+			}
+		},
+		{
+			"path": "pages/video/video",
+			"style": {
+				"navigationBarTitleText": "视频"
+			}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "新闻"
+			}
+		},
+		{
+			"path": "pages/calendar/calendar",
+			"style": {
+				"navigationBarTitleText": "老黄历"
+			}
+		},
+		{
+			"path": "pages/garbage/garbage",
+			"style": {
+				"navigationBarTitleText": "垃圾分类"
+			}
+		},
+		{
+			"path": "pages/weather/weather",
+			"style": {
+				"navigationBarTitleText": "天气预报"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "请问你是什么垃圾",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#000",
+		"selectedColor": "#2B9939",
+		"backgroundColor": "#fff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "static/shouye-nor.png",
+			"selectedIconPath": "static/shouye-act.png"
+		},{
+			"pagePath": "pages/pindao/pindao",
+			"text": "频道",
+			"iconPath": "static/pindao-nor.png",
+			"selectedIconPath": "static/pindao-act.png"
+		},{
+			"pagePath": "pages/function/function",
+			"text": "更多功能",
+			"iconPath": "static/function-nor.png",
+			"selectedIconPath": "static/function-act.png"
+		}],
+		"position": "bottom"
 	}
 }
