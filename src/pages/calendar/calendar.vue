@@ -51,10 +51,10 @@ export default {
             if(arr[5] == 0){
                 arr.splice(5,1);
                 if(arr[7] == 0){
-                    arr.splice(7,1)
+                    arr.splice(7,1);
                 }
             } else if(arr[8] == 0){
-                arr.splice(8,1)
+                arr.splice(8,1);
             }
             let str2 = arr.join('');
             this.date = str2;
