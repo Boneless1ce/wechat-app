@@ -7,14 +7,14 @@
             <view class="videolist-header-name">
                 {{item.data.content.data.provider.name}}
             </view>
-            <view class="videolist-header-more">
+            <view class="videolist-header-more" @click="clickMore">
                 <image src="../static/more.png"></image>
             </view>  
         </view>
         
         <view class="videolist-tags">
             <view>
-                <text class="videolist-littletag" v-for="tag in item.data.content.data.tags" :key="tag.id">
+                <text class="videolist-littletag tag-normal" v-for="tag in item.data.content.data.tags" :key="tag.id">
                     #{{tag.name}}#
                 </text>
                 <text class="videolist-littletag tag-black">
@@ -74,6 +74,52 @@ export default {
                     })
                 }
             })
+        },
+		getList(arr,data){
+			let newArr = arr;
+			if(arr.length == 0){
+				arr.push(data)
+				uni.showToast({
+					title: '添加成功'
+				})
+			} else {
+				let cArr = arr.map(item => item.id);
+				let result = cArr.indexOf(data.id);
+				if(result === -1){
+					arr.push(data);
+					uni.showToast({
+						title: '添加成功'
+					})
+				} else {
+					uni.showToast({
+						title: '您已添加此视频',
+						icon: "none"
+					})
+				}
+			}
+			newArr = arr;
+		},
+        clickMore(){
+			let that = this;
+            uni.showActionSheet({
+                itemList: ['★分享★', '★收藏★', '稍后观看'],
+                success: function (res) {
+                    switch (res.tapIndex) {
+                        case 0:
+                            uni.showToast({
+                            	title: '暂未开放',
+								icon: "none"
+                            })
+                            break;
+                        case 1:
+							that.getList(getApp().globalData.collectionList,that.item);
+                            break;
+                        case 2:
+							that.getList(getApp().globalData.watchLaterList,that.item);
+                            break;
+                    }
+                }
+            });
         }
     }
 }
@@ -108,10 +154,16 @@ export default {
     }
 
     .videolist-littletag{
-        font-size: 24upx;
+        font-size: 26upx;
         color: blue;
-        padding: 0 2px;
+        padding: 0 4upx;
+		margin-right: 2upx;
     }
+	.tag-normal{
+		display: inline-block;
+		background: #F6F6F6;
+		border-radius: 10upx;
+	}
     .tag-black{
         color: #000;
     }
@@ -120,6 +172,7 @@ export default {
         position: relative;
     }
     .videolist-content-image{
+		margin-top: 10upx;
         width: 100%;
     }
     .videolist-content-image image{
@@ -144,15 +197,14 @@ export default {
         padding-bottom: 20upx;
     }
     .videolist-footer-title{
-        height: 87upx;
-        font-size: 32upx;
+        font-size: 28upx;
         padding: 3px 0;
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
         word-wrap: break-word;
         white-space: normal;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
     }
     

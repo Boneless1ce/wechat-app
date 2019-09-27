@@ -113,7 +113,7 @@ export default {
         border-bottom: 1px solid #ccc;
     }
     .video-content .video-description{
-        font-size: 34upx;
+        font-size: 32upx;
     }
     .video-content .video-description-art{
         display: -webkit-box;
@@ -147,8 +147,6 @@ export default {
         background: #ddd;
         border-radius: 5px;
         margin-right: 15upx;
-        word-wrap:break-word; 
-        word-break:break-all; 
         display: inline-block;
         color: #fff;
     }
